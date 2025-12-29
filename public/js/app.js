@@ -191,6 +191,23 @@ if (Databaseuser.length > 0) {
 
                     }
 
+                }else if( show =="Deposit Money"){
+                    let askDepositMoney = prompt("how much money do you want to  Deposit ");
+
+                    if (askDepositMoney !== null && askDepositMoney.trim() !== ""){
+
+                        let amount = Number(askDepositMoney)
+
+                        if((!isNaN(amount) && amount < 1000)){
+                            user1.money += amount;
+                            console.log("you add " + amount);
+                            console.log("ha che7al 3andk db " + user1.money);
+
+                        }
+                    }
+
+
+
                 }
 
 
