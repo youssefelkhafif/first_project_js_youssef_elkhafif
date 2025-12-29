@@ -160,85 +160,126 @@ console.log(user1);
 
 // function loginUser(Databaseuser, ask) 
 
-let ask = prompt("do you want to  logging in, or changing the password")
+let running = true;
 
-if (Databaseuser.length > 0) {
-    if (ask == "logging in") {
-        let emaillogging = prompt("enter your email")
-        if (emaillogging == Databaseuser[0].email) {
-            let password = prompt("enter your password")
-            if (password == Databaseuser[0].password) {
-                alert("welcome to ure account we ben whiting for you for long time  ")
-                // display the amount they have
-                console.log(user1.money);
 
-                let show = prompt("services: Logout , Withdraw Money , Deposit Money , Take a Loan , Invest , History ")
-                if (show == "Logout") {
-                    alert("you logout good by ")
-                    // return;
-                } else if (show == "Withdraw Money") {
-                    let askWithdrawMoney = prompt("how much money do you want you can anly take under the 1000 ");
 
-                    if (askWithdrawMoney !== null && askWithdrawMoney.trim() !== "") {
+while (running) {
+    let ask = prompt("do you want to  logging in, or changing the password or exit")
+    if (ask === "exit") {
+        running = false;
+        alert("bye ");
+        break;
+    }
 
-                        let amount = Number(askWithdrawMoney);
+    if (Databaseuser.length > 0) {
 
-                        if (!isNaN(amount) && amount < 1000) {
-                            user1.money -= amount;
-                            console.log("you did take " + amount);
-                            console.log("ha che7al b9a " + user1.money);
+        let inAccount = true;
+
+        while (inAccount) {
+
+
+            if (ask == "logging in") {
+                let emaillogging = prompt("enter your email")
+                if (emaillogging == Databaseuser[0].email) {
+                    let password = prompt("enter your password")
+                    if (password == Databaseuser[0].password) {
+                        alert("welcome to ure account we ben whiting for you for long time  ")
+                        // display the amount they have
+                        console.log(user1.money);
+
+                        let show = prompt("services: Logout , Withdraw Money , Deposit Money , Take a Loan , Invest , History ")
+                        if (show == "Logout") {
+                            alert("you logout good by ")
+                            inAccount = false;
+                        } else {
+                            inAccount = false;
+                        }
+                        if (show == "Withdraw Money") {
+                            let askWithdrawMoney = prompt("how much money do you want you can anly take under the 1000 ");
+
+                            if (askWithdrawMoney !== null && askWithdrawMoney.trim() !== "") {
+
+                                let amount = Number(askWithdrawMoney);
+
+                                if (!isNaN(amount) && amount < 1000) {
+                                    user1.money -= amount;
+                                    console.log("you did take " + amount);
+                                    console.log("ha che7al b9a " + user1.money);
+                                }
+
+                            }
+
+                        } else {
+                            inAccount = false
+                        }
+                        if (show == "Deposit Money") {
+                            let askDepositMoney = prompt("how much money do you want to  Deposit ");
+
+                            if (askDepositMoney !== null && askDepositMoney.trim() !== "") {
+
+                                let amount = Number(askDepositMoney)
+
+                                if ((!isNaN(amount) && amount < 1000)) {
+                                    user1.money += amount;
+                                    console.log("you add " + amount);
+                                    console.log("ha che7al 3andk db " + user1.money);
+
+                                }
+                            }
+
+
+
+                        } else {
+                            inAccount = false
+                        }
+                        if (show == "History") {
+                            console.log("your  History " + user1);
+
+                        } else {
+                            inAccount = false
+                        }
+                        if (show == "Take a Loan") {
+
                         }
 
+
+
+                    } else {
+                        alert("sir ghayrha asahbi ")
                     }
-
-                }else if( show =="Deposit Money"){
-                    let askDepositMoney = prompt("how much money do you want to  Deposit ");
-
-                    if (askDepositMoney !== null && askDepositMoney.trim() !== ""){
-
-                        let amount = Number(askDepositMoney)
-
-                        if((!isNaN(amount) && amount < 1000)){
-                            user1.money += amount;
-                            console.log("you add " + amount);
-                            console.log("ha che7al 3andk db " + user1.money);
-
-                        }
-                    }
-
-
-
-                }else if (show =="History"){
-                    console.log("your  History " + user1);
-                    
+                } else {
+                    inAccount = false
                 }
 
 
+            } else if (ask == "changing the password") {
+                // first let ask the user if they have alredy acount 
+                // and if we have hes acount we ask for new change in password
+                let wichone = prompt("to change your password enter ur email")
+                if (wichone == Databaseuser[0].email) {
+                    let changepassword = prompt("enter change to your passwor")
+                    if (changepassword.length >= 7 && !changepassword.includes(" ") && /[@#\-+*/]/.test(changepassword)) {
+                        alert("change was done ")
+                        Databaseuser[0].password = changepassword
+                        inAccount = false;
+
+                    }
+                }
 
             } else {
-                alert("sir ghayrha asahbi ")
-            }
-        }
-
-
-    } else if (ask == "changing the password") {
-        // first let ask the user if they have alredy acount 
-        // and if we have hes acount we ask for new change in password
-        let wichone = prompt("to change your password enter ur email")
-        if (wichone == Databaseuser[0].email) {
-            let changepassword = prompt("enter change to your passwor")
-            if (changepassword.length >= 7 && !changepassword.includes(" ") && /[@#\-+*/]/.test(changepassword)) {
-                alert("change was done ")
-                Databaseuser[0].password = changepassword
-
+                alert("by")
+                inAccount = false
             }
         }
 
     } else {
-        alert("by")
+        alert("no users found, please signup first")
+        running = false;  //  kat khraj mn loop
     }
-} else {
-    console.log(Databaseuser[0]);
 }
 
-console.log(Databaseuser[0]);
+
+
+
+
