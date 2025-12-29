@@ -36,7 +36,7 @@ let Databaseuser = []
 //             - Do not save the Name if it has less than 5 characters (excluding spaces).
 //             - Do not save the Name if it contains numbers, "@", or similar special characters.
 
-let Username = prompt("unter you full name").trim()
+let Username = prompt("enter you full name").trim()
 
 let usernamevalidation = Username.length >= 5 && Username != Username.includes("@") 
 
@@ -50,7 +50,7 @@ let usernamevalidation = Username.length >= 5 && Username != Username.includes("
 //             - Do not save the Email if it does not contain exactly one "@" symbol.
 //             - Ensure the email is unique.
 
-let Email = prompt("unter your email").trim().toLowerCase();
+let Email = prompt("enter your email").trim().toLowerCase();
 
 let emailvalidation =  Email.length >= 10 && Email.includes("@") && Email.split("@").length === 2 && !Email.includes(" ")
 
@@ -71,7 +71,7 @@ let agevalidation = Age == Number(Age) && Age != " " && Age.length > 0 && Age.le
 //             - Require at least one special character from the set: ["@", "#", "-", "+", "*", "/"].
 //             - Require at least 7 characters to confirm the password.
 
-let Password = prompt("unter your password it must have special character ")
+let Password = prompt("enter your password it must have special character ")
 
 let passwordvalidation =  Password.length >= 7 && !Password.includes(" ") && /[@#\-+*/]/.test(Password);
 
@@ -96,7 +96,7 @@ if ( !emailvalidation  || !passwordvalidation || !usernamevalidation || !agevali
 
 }
 
-//  && Username.charAt(0).toLocaleUpperCase + Username.slice(1) 
+
 
 
 
@@ -146,9 +146,9 @@ let ask = prompt("do you want to  logging in, or changing the password")
 
 if(Databaseuser.length > 0) {
 if(ask == "logging in" ){
-    let emaillogging =prompt ("unter your email")
+    let emaillogging = prompt ("enter your email")
         if(emaillogging == Databaseuser[0].email){
-           let password = prompt("unter your password")
+           let password = prompt("enter your password")
            if (password == Databaseuser[0].password){
             alert("welcome to ure account we ben whiting for you for long time  ")
 
@@ -161,13 +161,23 @@ if(ask == "logging in" ){
     
     
 }else if (ask == "changing the password"){
-    // console.log("changing the password");
-    alert("changing the password")
+    // first let ask the user if they have alredy acount 
+    // and if we have hes acount we ask for new change in password
+    let wichone = prompt ("to change your password enter ur email")
+    if (wichone == Databaseuser[0].email ){
+        let changepassword = prompt("enter change to your passwor")
+        if(changepassword.length >= 7 && !changepassword.includes(" ") && /[@#\-+*/]/.test(changepassword)){
+            alert("change was done ")
+            Databaseuser[0].password = changepassword
+            
+        }
+    }
     
 }else {
     alert("by")
 }
 }else{
     console.log(Databaseuser[0]);
-    
 }
+
+console.log(Databaseuser[0]);
