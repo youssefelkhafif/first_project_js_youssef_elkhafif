@@ -18,30 +18,13 @@
 
 let Databaseuser = []
 
-let user = {  username: "" ,email: "", age: "" , password: ""}
-
 // ## 3 - Instructions:
 // - Account Creation and Management:
 //     + Allow the user, via prompts, to choose between signing up, logging in, or changing the password.
 //     + If the user only writes "exit," they exit the current process, and the choice question is asked again.
 //         * If the user chooses to sign up, here are the details they must enter:
 
-// let ask = prompt("do you want to signing up, logging in, or changing the password")
 
-// if(ask == "signing up" ){
-
-//     alert("signing up")
-    
-// }else if (ask == "logging in" ){
-//     // console.log("logging in ");
-//     alert("logging in")
-// }else if (ask == "changing the password"){
-//     // console.log("changing the password");
-//     alert("changing the password")
-    
-// }else {
-//     alert("by")
-// }
 
 
 
@@ -117,7 +100,7 @@ if ( !emailvalidation  || !passwordvalidation || !usernamevalidation || !agevali
 
 
 
-console.log(Databaseuser);
+console.log(Databaseuser[0].username);
 
 //             # Password_confirmed:
 //             - The user must re-enter their exact password; otherwise, they are blocked.
@@ -153,3 +136,38 @@ console.log(Databaseuser);
             
 //             # History:
 //             - Ability to view the entire transaction history.
+
+
+
+
+
+
+let ask = prompt("do you want to  logging in, or changing the password")
+
+if(Databaseuser.length > 0) {
+if(ask == "logging in" ){
+    let emaillogging =prompt ("unter your email")
+        if(emaillogging == Databaseuser[0].email){
+           let password = prompt("unter your password")
+           if (password == Databaseuser[0].password){
+            alert("welcome to ure account we ben whiting for you for long time  ")
+
+            // mohim hna fach ghay loggi user gha ntala3lih flos ou che7al bgha ihot  ola bgha itsalaf flos
+
+           }else{
+            alert("sir ghayrha asahbi ")
+           }
+        }
+    
+    
+}else if (ask == "changing the password"){
+    // console.log("changing the password");
+    alert("changing the password")
+    
+}else {
+    alert("by")
+}
+}else{
+    console.log(Databaseuser[0]);
+    
+}
