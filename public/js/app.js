@@ -175,7 +175,7 @@ if (Databaseuser.length > 0) {
                 let show = prompt("services: Logout , Withdraw Money , Deposit Money , Take a Loan , Invest , History ")
                 if (show == "Logout" ){
                     alert("you logout good by ")
-                    return;
+                    // return;
                 }else if ( show == "Withdraw Money" ){
                     let askWithdrawMoney = prompt("how much money do you want you can anly take under the 1000 ")
                     if (Number(askWithdrawMoney) < 1000){
