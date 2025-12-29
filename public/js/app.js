@@ -240,7 +240,19 @@ while (running) {
                             inAccount = false
                         }
                         if (show == "Take a Loan") {
+                            let askTakeaLoan = prompt("do you want to take a loan (yes) or (no)")
+                            if(askTakeaLoan = "yes"){
+                                user1.money += user1.money / 20;
+                                console.log("this you loan " + user1.money);
+                                
+                            }else{
+                                inAccount = false
+                            }
 
+                        
+
+                        }else{
+                            inAccount = false
                         }
 
 
