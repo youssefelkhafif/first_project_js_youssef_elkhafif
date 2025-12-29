@@ -208,6 +208,9 @@ if (Databaseuser.length > 0) {
 
 
 
+                }else if (show =="History"){
+                    console.log("your  History " + user1);
+                    
                 }
 
 
