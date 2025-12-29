@@ -29,7 +29,7 @@ let Databaseuser = []
 
 
 //             # Name (Full):
-//             - Check for leading or trailing spaces. trim()
+//             - Check for leading or trailing spaces. 
 //             - The first letter should be capitalized.
 //             - After each space, the first letter should remain capitalized.
 //             - Check that all other characters are in lowercase.
@@ -114,6 +114,20 @@ console.log(Databaseuser[0].username);
 
 //         * If the user chooses to change the password:
 //             - They must enter their existing Email in the Database.
+
+class Persone {
+    constructor( name , age , email , money ) {
+        this.name  = name
+        this.age   = age
+        this.email = email
+        this.money = money
+        
+    }
+}
+let user1 =  new Persone(Databaseuser[0].username , Databaseuser[0].age , Databaseuser[0].email , 200 )
+console.log(user1); 
+
+
 
 //         * After the user logs in, display the amount they have in their bank (user's choice) and offer them services:
 //             # Logout:
