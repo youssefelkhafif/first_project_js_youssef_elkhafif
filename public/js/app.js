@@ -173,16 +173,24 @@ if (Databaseuser.length > 0) {
                 console.log(user1.money);
 
                 let show = prompt("services: Logout , Withdraw Money , Deposit Money , Take a Loan , Invest , History ")
-                if (show == "Logout" ){
+                if (show == "Logout") {
                     alert("you logout good by ")
                     // return;
-                }else if ( show == "Withdraw Money" ){
-                    let askWithdrawMoney = prompt("how much money do you want you can anly take under the 1000 ")
-                    if (Number(askWithdrawMoney) < 1000){
-                        user1 -= askWithdrawMoney
-                        console.log("you did take " + askWithdrawMoney);
-                        
+                } else if (show == "Withdraw Money") {
+                    let askWithdrawMoney = prompt("how much money do you want you can anly take under the 1000 ");
+
+                    if (askWithdrawMoney !== null && askWithdrawMoney.trim() !== "") {
+
+                        let amount = Number(askWithdrawMoney);
+
+                        if (!isNaN(amount) && amount < 1000) {
+                            user1.money -= amount;
+                            console.log("you did take " + amount);
+                            console.log("ha che7al b9a " + user1.money);
+                        }
+
                     }
+
                 }
 
 
